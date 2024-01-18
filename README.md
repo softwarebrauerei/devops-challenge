@@ -26,7 +26,7 @@ content-type: "application/json"
 Erstelle ein Dockerfile welches die Applikation buildet und via `docker compose up` gestartet werden kann. Die Applikation soll auf Port `3000` hören. 
 
 ### Part III - Deploy
-Das Image soll auf einem k8s Cluster deployed werden. Erstelle die entsprechenden Definition für k8s. 
+Das Image soll auf einem k8s Cluster deployed werden. Erstelle die entsprechenden Definitionen für k8s. 
 
 ### Zusatzaufgabe
 Wie richtest du eine CI/CD Pipeline ein, welche vom `main` Branch auf Produktion deployed? Hier darfst du Annahmen treffen, bitte entsprechend notieren.
