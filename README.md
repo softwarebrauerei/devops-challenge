@@ -5,14 +5,15 @@ Die Software Brauerei DevOps Challenge für unsere Bewerber.
 ## Requirements
 
 1.  Die Aufgabe soll nicht mehr als 2 Stunden in Anspruch nehmen. 
-2.  Stelle deine Ergebnisse als Git-Repository zur Verfügung.
+2.  Stelle deine Ergebnisse als Git-Repository (oder mehrere) zur Verfügung.
+3.  Die Infrastrukturkosten sollen so gering wie möglich gehalten werden.
 
 
 ## Die Aufgabe
-Die Aufgabe besteht aus 3 zusammenhängende Aufgaben. Ziel ist es, dass deine Ergebnisse einfach via `git clone` gecloned und mittels `docker compose up` lokal gestartet werden kann.
+Die Aufgabe besteht aus 3 zusammenhängenden Aufgaben. Ziel ist es, dass dein Repository einfach via `git clone` gecloned und mittels `docker compose up` lokal gestartet werden kann.
 
 ### Part I - Die Applikation
-Erstelle eine einfach Webapplikation welche über einen REST-Endpoint `/saron` den aktuellen SARON Zinssatz von der Webseite der SNB abfragt und als folgenden Json zurück gibt: 
+Erstelle eine einfach Webapplikation welche über einen HTTP-Endpoint `/saron` den aktuellen SARON Zinssatz von der Webseite der SNB abfragt und als folgenden Json zurück gibt: 
 ```
 GET /saron
 
@@ -23,10 +24,12 @@ content-type: "application/json"
 ``` 
 
 ### Part II - Applikation bereitstellen
-Erstelle ein Dockerfile welches die Applikation buildet und via `docker compose up` gestartet werden kann. Die Applikation soll auf Port `3000` hören. 
+Erstelle ein Dockerfile um die Applikation zu builden und via `docker compose up` zu starten. Die Applikation muss, über den als Environmentvariable definierten `PORT` erreichbar sein. Ist die Environmentvariable nicht gesezt soll der Port `3000` verwendet werden.
 
-### Part III - Deploy
-Das Image soll auf einem k8s Cluster deployed werden. Erstelle die entsprechenden Definitionen für k8s. 
+### Part III - Infrastructure
+Erstelle die nötige Infrastruktur in [Terraform](https://www.terraform.io/) mit dem [AWS Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs). 
+#### Zusätzliche Überlegungen
+Themen wie Logging, Monitoring und Security sollen auch berücksichtigt werden, jedoch reicht eine Zusammenfassung der dazu gehörenden Gedanken. Dies muss nicht (aber kann) via Terraform umgesetzt werden.
 
 ### Zusatzaufgabe
-Wie richtest du eine CI/CD Pipeline ein, welche vom `main` Branch auf Produktion deployed? Hier darfst du Annahmen treffen, bitte entsprechend notieren.
+Richte einen GitHub Workflow ein welcher die Infrastruktur via Terraform applied wenn ein Merge auf dem `main` branch erfolgt. Was gilt es dabei zu beachten?
